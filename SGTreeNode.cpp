@@ -29,7 +29,7 @@ class SGTree{
 		seg.resize(4 * N + 1);
 	}	
 	
-	void build(int ind, int low, int high, vector<int>arr) {
+	void build(int ind, int low, int high, vector<int> &arr) {
 		if(low == high) {
 			seg[ind].val = arr[low];
 			return;
