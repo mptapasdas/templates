@@ -172,22 +172,14 @@ void insertWord(string word) {
 
 int lookup[MAX][MAX];
  
-// Fills lookup array lookup[][] in bottom up manner.
-void buildSparseTable(int arr[], int n)
-{
-    // Initialize M for the intervals with length 1
+void buildSparseTable(int arr[], int n) {
     for (int i = 0; i < n; i++)
         lookup[i][0] = arr[i];
  
-    // Compute values from smaller to bigger intervals
     for (int j = 1; (1 << j) <= n; j++) {
  
-        // Compute minimum value for all intervals with
-        // size 2^j
         for (int i = 0; (i + (1 << j) - 1) < n; i++) {
  
-            // For arr[2][10], we compare arr[lookup[0][7]]
-            // and arr[lookup[3][10]]
             if (lookup[i][j - 1] <
                         lookup[i + (1 << (j - 1))][j - 1])
                 lookup[i][j] = lookup[i][j - 1];
